@@ -30,7 +30,8 @@ export default function Chrome() {
     // light chrome while over the bright sections
     const st = ScrollTrigger.create({
       trigger: "#tools",
-      start: "top 40px",
+      // desktop: the hero has already flooded to paper ~300px before the tools section arrives
+      start: () => (window.innerWidth > 900 ? "top 340px" : "top 40px"),
       endTrigger: "#waitlist",
       end: "top 40px",
       toggleClass: { targets: document.body, className: "is-light" },

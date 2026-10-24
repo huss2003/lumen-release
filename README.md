@@ -2,13 +2,21 @@
 
 A scroll-driven product launch for **Lumen**, a fictional AI creative suite for design teams. It was built as a motion design showcase: one continuous scroll story instead of stacked sections.
 
+**Live:** [lumen-release.vercel.app](https://lumen-release.vercel.app)
+
+[![Lumen](docs/cover.jpg)](https://lumen-release.vercel.app)
+
+| Twelve tools, one at a time | Filterable grid | Detail sheet |
+| --- | --- | --- |
+| ![Focus](docs/focus.jpg) | ![Grid](docs/grid.jpg) | ![Sheet](docs/sheet.jpg) |
+
 ## The story
 
 | Beat | What happens |
 | --- | --- |
 | Loader | Twelve spectrum bands rise one after another (one per tool), then sweep away |
 | Hero (pinned) | A glass lens with an iridescent halo, drawn live on `<canvas>` and scrubbed by scroll. Two lines crossfade, then the halo's colours separate into twelve vertical bands |
-| Hand-off | The hero's last frame matches the tools section exactly, so it dissolves into it with no cut |
+| Hand-off | The hero's last frame matches the tools section's first frame exactly, and the swap happens the instant the pin ends, so there is no visible cut |
 | Tools (pinned) | Scrolling opens the bands one at a time into iridescent glass panels, then they settle into a filterable grid. Snap points land on every tool |
 | Detail sheet | Clicking a panel opens a sheet that grows from the click point, with a count-up stat, Escape to close, arrow keys to browse and a focus trap |
 | Integrations | Frosted-glass strips that expand with `flex-grow` |

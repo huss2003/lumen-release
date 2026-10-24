@@ -176,6 +176,10 @@ export default function Hero() {
           scrub: touch ? true : 0.6,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          // desktop: the last frame matches the tools section's first frame exactly, and at the
+          // moment the pin ends the tools section sits exactly underneath, so swap instantly
+          onLeave: () => window.innerWidth > 900 && gsap.set(root.current, { autoAlpha: 0 }),
+          onEnterBack: () => gsap.set(root.current, { autoAlpha: 1 }),
         },
       });
       tl.to(".hero__bottom", { opacity: 0, y: 20, duration: 0.6, ease: "power2.in" }, 0)
@@ -187,8 +191,8 @@ export default function Hero() {
         .to(".hero__beat--1", { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, 2.2)
         .fromTo(".hero__beat--2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 2.5)
         .to(".hero__beat--2", { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, 3.5)
-        // desktop: the last frame matches the tools section exactly, so the hero dissolves into it
-        .to(root.current, { opacity: window.innerWidth > 900 ? 0 : 1, duration: 0.3, ease: "none" }, 8.9)
+        // short hold on the final frame so the scrub catches up before the swap
+        .to({}, { duration: 0.4 }, 8.8);
 
 
       return () => {

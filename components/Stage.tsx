@@ -96,7 +96,7 @@ export default function Stage() {
             const show = Math.max(focus, g);
             contents[i].style.opacity = String(show);
             const v = verticals[i];
-            if (v) v.style.opacity = String((1 - show) * rise * 0.75);
+            if (v) v.style.opacity = String((1 - show) * rise * 0.75 * smooth(0, 0.05, p));
             x += bw + gap;
           });
 
@@ -106,6 +106,7 @@ export default function Stage() {
             lastIdx = idx;
             counter.current.textContent = `${String(idx + 1).padStart(2, "0")} / 12 — ${TOOLS[idx].name}`;
           }
+          gsap.set(".stage__head h2", { opacity: smooth(0, 0.05, p), y: (1 - smooth(0, 0.05, p)) * 16 });
           gsap.set(".stage__counter", { opacity: (1 - g) * openAmt });
           gsap.set(".filters", { opacity: g, pointerEvents: g > 0.95 ? "auto" : "none" });
           field.current!.classList.toggle("is-grid", g > 0.98);
